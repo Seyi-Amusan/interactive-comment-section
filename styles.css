@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    background-color: hsl(223, 19%, 93%);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    /* position: relative; */
+
+}
+
+img{user-select: none;}
+
+section{
+    padding: 5rem 1rem 0;
+}
+
+.comment{
+    display: none;
+}
+
+.user-comment{
+    display: grid;
+}
+
+.comment, .user-comment{
+    background-color: hsl(228, 33%, 97%);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    height: auto;
+
+    grid-template-rows: 3rem 1fr 3rem;
+    grid-template-columns: 1fr;
+    row-gap: 8px;
+
+    .header img{
+        height: 2rem;
+    }
+}
+
+
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 80%;
+}
+
+.username{
+    color: hsl(211, 10%, 45%);
+    font-weight: bold;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-edit{
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: .8rem;
+}
+
+.score, .reply, .delete, .edit{
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    column-gap: 5px;
+    cursor: pointer;
+}
+
+.new-comment{
+    margin: 2rem;
+    height: 10rem;
+
+    display: grid;
+    grid-auto-flow: column;
+    row-gap: 1rem;
+    grid-template-columns: 1rem 1fr 5rem;
+    grid-template-rows: 1fr 3rem;
+}
+
+.reply-comment{
+    width: 80vw;
+}
+
+input{
+    grid-column: 1 / span 3;
+    padding: 0 0 0 8px ;
+    border: 0;
+    border-radius: 10px;
+}
+
+input::placeholder{
+    font-size: 1rem;
+}
+
+.add-comment-btn{
+    grid-column: 3 / 4;
+    height: 2.5rem;
+    background-color: hsl(238, 40%, 52%);
+    border-radius: 10px;
+    border: 0;
+    color: hsl(0, 0%, 100%);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.new-comment img{
+    height: 2rem;
+}
+
+.identifier{
+    font-weight: bold;
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(238, 40%, 52%);
+    padding: 3px;
+    border-radius: 5px;
+}
