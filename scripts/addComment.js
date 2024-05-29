@@ -13,7 +13,8 @@ addCommentBtn.addEventListener('click', e => {
 
     //input the user comment
     newCommentDiv.querySelector('.body .content').innerText = inputEl.value
-
+    newCommentDiv.querySelector('.header .created-at').innerText = 'Just now'
+    
     section.append(newCommentDiv)
     inputEl.value = ''
 })

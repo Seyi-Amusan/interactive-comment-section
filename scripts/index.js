@@ -3,8 +3,13 @@ export const userCommentDiv = document.querySelector('.user-comment')
 export const section = document.querySelector('section')
 export const addCommentBtn = document.querySelector('.add-comment-btn')
 export const inputEl = document.querySelector('input')
+export const formEl = document.querySelector('form')
 
 
+
+
+
+//clones a comment node
 export function cloneCommentDiv(user) {
     let newCommentDiv
 
@@ -15,13 +20,13 @@ export function cloneCommentDiv(user) {
         newCommentDiv = commentDiv.cloneNode(true)
     }
 
-    newCommentDiv.style.display = 'block'
+    newCommentDiv.style.display = 'grid'
     return newCommentDiv
 }
 
 
 
-//to get the edit and delete buttons of newly added comments
+//gets the edit and delete buttons of newly added comments because the process is asynchronous
 
 let btns
 
@@ -42,3 +47,24 @@ export function onDeleteBtnsSet(callback) {
 export function getDeleteBtns(btns) {
     return btns
 }
+
+//score voting....
+//a second should be enough to update dom in order to store appropriate values into variables
+setTimeout(() => {
+    const score = document.querySelectorAll('.score p')
+    const upVoteBtns = document.querySelectorAll('.plus')
+    const downVoteBtns = document.querySelectorAll('.minus')
+
+
+    upVoteBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            score.innerText++;
+        })
+    });
+
+    downVoteBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            score.innerText--;
+        })
+    });
+}, 1000);

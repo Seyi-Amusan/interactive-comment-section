@@ -6,12 +6,6 @@ async function loadCommentsFromJson() {
     displayComments(data)
 }
 
-// function getNewSection() {
-//     loadCommentsFromJson()
-
-//     return document.querySelector('section')
-
-// }
 
 function displayComments(data) {
     data.comments.forEach(comment => {
@@ -35,9 +29,6 @@ function displayComments(data) {
     });
 }
 
-// getNewSection()
-
-// export {getNewSection}
 
 loadCommentsFromJson()
 

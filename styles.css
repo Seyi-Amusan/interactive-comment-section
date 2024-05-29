@@ -8,14 +8,23 @@ body{
     min-height: 100vh;
     background-color: hsl(223, 19%, 93%);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    /* position: relative; */
 
 }
 
 img{user-select: none;}
 
+main{
+    display: grid;
+    justify-content: center;
+}
+
 section{
     padding: 5rem 1rem 0;
+    max-width: 30rem;
+
+    display: grid;
+    /* grid-template-rows: auto; */
+    grid-template-columns: 1fr;
 }
 
 .comment, .user-comment{
@@ -26,12 +35,12 @@ section{
     background-color: hsl(228, 33%, 97%);
     border-radius: 10px;
     padding: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     height: auto;
 
     grid-template-rows: 3rem 1fr 3rem;
     grid-template-columns: 1fr;
-    row-gap: 8px;
+    row-gap: 10px;
 
     .header img{
         height: 2rem;
@@ -45,17 +54,19 @@ section{
     align-items: center;
     justify-content: space-between;
 
-    width: 80%;
+    width: 18rem;
 }
 
 .username{
-    color: hsl(211, 10%, 45%);
+    color: hsl(212, 24%, 26%);
     font-weight: bold;
 }
 
 .footer{
     display: flex;
     justify-content: space-between;
+
+    font-weight: bold;
 }
 
 .delete-edit{
@@ -72,6 +83,23 @@ section{
     cursor: pointer;
 }
 
+.reply, .score p, .edit p{
+    color: hsl(238, 40%, 52%);
+}
+
+.delete p{
+    color: hsl(358, 79%, 66%);
+}
+
+.score{
+    background-color: hsl(223, 19%, 93%);
+    width: 5rem;
+    padding: 0 5px;
+    border-radius: 1rem;
+
+    justify-items: center;
+}
+
 .new-comment{
     margin: 2rem;
     height: 10rem;
@@ -84,7 +112,8 @@ section{
 }
 
 .reply-comment{
-    width: 80vw;
+    width: 85%;
+    justify-self: end;
 }
 
 input{
@@ -119,4 +148,8 @@ input::placeholder{
     background-color: hsl(238, 40%, 52%);
     padding: 3px;
     border-radius: 5px;
+}
+
+.created-at, .content{
+    color: hsl(211, 10%, 45%);
 }
