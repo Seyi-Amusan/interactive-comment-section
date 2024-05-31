@@ -1,7 +1,7 @@
 import { section, cloneCommentDiv } from "./index.js";
 
 async function loadCommentsFromJson() {
-    const result = await fetch('../data.json')
+    const result = await fetch('./data.json')
     const data = await result.json()
     displayCommentsNode(data)
 }
@@ -45,14 +45,17 @@ function displayCommentsNode(data) {
 
 
 function inputCommentNodeData(data, node, index) {
-    console.log(index);
-    const header = node.querySelector('.header').children
-
+    // const header = node.querySelector('.header').children
     const commentData = data.comments[index] //this is declared to minimize repetition
     
-    header[0].setAttribute('src', commentData.user.image.png) //changes the avatar
-    header[1].innerText = commentData.user.username //changes the username
-    header[2].innerText = commentData.createdAt //changes the time on comment
+    // header[0].setAttribute('src', commentData.user.image.png) //changes the avatar
+    // header[1].innerText = commentData.user.username //changes the username
+    // header[2].innerText = commentData.createdAt //changes the time on comment
+    // const commentData = data.comments[index] //this is declared to minimize repetition
+    
+    // header[0].setAttribute('src', commentData.user.image.png) //changes the avatar
+    // header[1].innerText = commentData.user.username //changes the username
+    // header[2].innerText = commentData.createdAt //changes the time on comment
 
     node.querySelector('.body .content').innerText = commentData.content //changes the user comment
 
