@@ -6,63 +6,63 @@ async function loadCommentsFromJson() {
     displayCommentsNode(data)
 }
 
-let i = 1
 
-
+// Function to display comments and their replies
 function displayCommentsNode(data) {
-    data.comments.forEach(comment => {
-        
-        //displays a comment div
-        const newCommentDiv = cloneCommentDiv()
-        section.append(newCommentDiv)
+    data.comments.forEach((comment, index) => {
 
-        //input the correct data from data.json into the node
-        
-        while (i > -1) {
+        // Displays a comment div
+        const newCommentDiv = cloneCommentDiv();
+        section.append(newCommentDiv);
 
-            inputCommentNodeData(data, newCommentDiv, i)
-            i--
+        // Input the correct data from data.json into the node
+        inputCommentData(data, newCommentDiv, index);
 
-
-        }
-        
-
-
-        //checks if there are replies to the comment div
+        // Checks if there are replies to the comment div
         if (comment.replies.length != 0) {
+            comment.replies.forEach((reply, replyIndex) => {
+                console.log(reply);
+                const newReplyDiv = cloneCommentDiv();
+                newReplyDiv.classList.add('reply-comment');
 
-            comment.replies.forEach(reply => {
-                const newReplyDiv = cloneCommentDiv()
-                newReplyDiv.classList.add('reply-comment')
+                // Insert reply data into the reply div
+                inputReplyCommentData(reply, newReplyDiv, replyIndex)
 
-                //adds the reply as a sibling to the comment div on the DOM 
-                newCommentDiv.insertAdjacentElement('afterend', newReplyDiv)
-            })
+                // Adds the reply as a sibling to the comment div on the DOM
+                newCommentDiv.insertAdjacentElement('afterend', newReplyDiv);
+            });
         }
     });
 }
 
 
 
-function inputCommentNodeData(data, node, index) {
-    // const header = node.querySelector('.header').children
-    const commentData = data.comments[index] //this is declared to minimize repetition
-    
-    // header[0].setAttribute('src', commentData.user.image.png) //changes the avatar
-    // header[1].innerText = commentData.user.username //changes the username
-    // header[2].innerText = commentData.createdAt //changes the time on comment
-    // const commentData = data.comments[index] //this is declared to minimize repetition
-    
-    // header[0].setAttribute('src', commentData.user.image.png) //changes the avatar
-    // header[1].innerText = commentData.user.username //changes the username
-    // header[2].innerText = commentData.createdAt //changes the time on comment
+// Function to input data into reply comment node
+function inputReplyCommentData(reply, node, index) {
+    console.log(index);
+    const header = node.querySelector('.header').children;
 
-    node.querySelector('.body .content').innerText = commentData.content //changes the user comment
+    header[0].setAttribute('src', reply.user.image.png); // Changes the avatar
+    header[1].innerText = reply.user.username; // Changes the username
+    header[2].innerText = reply.createdAt; // Changes the time on comment
 
-    node.querySelector('.footer .score p').innerText = commentData.score //changes the score
+    node.querySelector('.body .content').innerHTML = `<b style='color: hsl(238, 40%, 52%);'>@${reply.replyingTo}</b> ${reply.content}`;// Changes the user comment
 
+    node.querySelector('.footer .score p').innerText = reply.score; // Changes the score
+}
 
-    console.log(commentData);
+// Function to input data into comment node
+function inputCommentData(data, node, index) {
+    const header = node.querySelector('.header').children;
+    const commentData = data.comments[index]; // This is declared to minimize repetition
+
+    header[0].setAttribute('src', commentData.user.image.png); // Changes the avatar
+    header[1].innerText = commentData.user.username; // Changes the username
+    header[2].innerText = commentData.createdAt; // Changes the time on comment
+
+    node.querySelector('.body .content').innerText = commentData.content;// Changes the user comment
+
+    node.querySelector('.footer .score p').innerText = commentData.score; // Changes the score
 }
 
 loadCommentsFromJson()

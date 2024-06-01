@@ -9,6 +9,7 @@ onDeleteBtnsSet(btns => {
             if (e.target.closest('.delete')) {
 
                 //modal to confirm deletion of comment
+                modal.style.top = `${window.scrollY}px` //displays the modal at the scroll position of the user
                 modal.style.display = 'block'
 
                 cancelDelete.addEventListener('click', () => {
