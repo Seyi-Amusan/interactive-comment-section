@@ -1,4 +1,4 @@
-import { section, formEl, cloneCommentDiv, userCommentDiv } from "./index.js";
+import { section, formEl, cloneCommentDiv, userCommentDiv, initBtns, addCommentBtn } from "./index.js";
 
 
 //a second should be enough time to generate previous comments
@@ -9,7 +9,7 @@ setTimeout(() => {
     replyBtns.forEach(btn => {
 
         btn.addEventListener('click', () => {
-
+            
             //grabs the username and comment user wants to reply to
             const commentToReply = btn.parentNode.parentNode
             const replyingTo = commentToReply.querySelector('.header .username').innerText
@@ -19,7 +19,9 @@ setTimeout(() => {
             replyForm.querySelector('input').placeholder = 'Reply...'
             replyForm.querySelector('button').innerText = 'REPLY'
             replyForm.querySelector('input').focus()
-            section.insertBefore(replyForm, commentToReply.nextSibling)
+            console.log(commentToReply.nextSibling);
+            commentToReply.insertAdjacentElement('afterend', replyForm)
+            // section.insertBefore(replyForm, commentToReply.nextSibling)
             
 
             const sendReplyBtn = replyForm.querySelector('button')
@@ -30,13 +32,18 @@ setTimeout(() => {
 
                 //creating the reply node
                 const newCommentDiv = cloneCommentDiv(true)
-                newCommentDiv.querySelector('.body p').innerText = `@${replyingTo} ${replyForm.querySelector('input').value}` 
+                // newCommentDiv.querySelector('.body p').innerText = `@${replyingTo} ${replyForm.querySelector('input').value}` 
+                newCommentDiv.querySelector('.body p').innerHTML = `<b style="color: hsl(238, 40%, 52%);">@${replyingTo}</b> ${replyForm.querySelector('input').value}`;
                 newCommentDiv.querySelector('.header .created-at').innerText = 'Just now'
                 newCommentDiv.classList.add('reply-comment')
                 
-                // replyForm.replaceWith(newCommentDiv)
+                // displaying the reply node
                 replyForm.remove()
-                commentToReply.nextSibling.appendChild(newCommentDiv)
+                if (commentToReply.nextElementSibling.classname === 'replies') {
+                    commentToReply.nextSibling.appendChild(newCommentDiv)
+                } else {
+                    commentToReply.insertAdjacentElement('afterend', newCommentDiv)
+                }
             })
 
         })

@@ -2,11 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="styles.css">
+  
   <script defer type="module" src="scripts/components.js"></script>
   <script defer type="module" src="scripts/index.js"></script>
   <script defer type="module" src="scripts/getPreviousComments.js"></script>
@@ -24,7 +29,7 @@
     <section>
       <div class="comment">
         <div class="header">
-          <img src="./images/avatars/image-amyrobson.png" alt="">
+          <img class="avatar" src="./images/avatars/image-amyrobson.png" alt="">
           <p class="username">amyrobson</p>
           <p class="created-at">1 month ago</p>
         </div>
@@ -85,7 +90,7 @@
     </section>
   
     <form class="new-comment">
-      <img src="./images/avatars/image-juliusomo.png" alt="">
+      <img class="avatar" src="./images/avatars/image-juliusomo.png" alt="">
       <input type="text" placeholder="Add a comment...">
       <button class="add-comment-btn">SEND</button>
     </form>

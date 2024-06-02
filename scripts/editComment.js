@@ -6,6 +6,8 @@ onDeleteBtnsSet(btns => {
     //get edit btns on the dom
     const editBtns = getDeleteBtns(btns);
 
+    console.log(editBtns);
+
     editBtns.forEach(btn => {
         btn.addEventListener('click', e => {
             if (e.target.closest('.edit')) {
@@ -33,3 +35,5 @@ onDeleteBtnsSet(btns => {
         })
     });
 })
+
+initBtns(addCommentBtn)
