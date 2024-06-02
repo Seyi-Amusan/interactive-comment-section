@@ -12,24 +12,36 @@ function displayCommentsNode(data) {
     data.comments.forEach((comment, index) => {
 
         // Displays a comment div
-        const newCommentDiv = cloneCommentDiv();
+        const newCommentDiv = cloneCommentDiv()
         section.append(newCommentDiv);
+
+        //insert a div as a sibling to the comment node to house replies to the comment if peradventure there will be
+        const div = document.createElement('div')
+        div.classList.add('replies')
+        newCommentDiv.insertAdjacentElement('afterend', div)
 
         // Input the correct data from data.json into the node
         inputCommentData(data, newCommentDiv, index);
 
         // Checks if there are replies to the comment div
         if (comment.replies.length != 0) {
+
             comment.replies.forEach((reply, replyIndex) => {
-                console.log(reply);
-                const newReplyDiv = cloneCommentDiv();
+
+                //displaying a reply div
+                let newReplyDiv
+                if (reply.user.username === data.currentUser.username) {
+                    newReplyDiv = cloneCommentDiv(true); //displays a user reply div
+                } else {
+                    newReplyDiv = cloneCommentDiv(); //displays an ordinary reply div
+                }
                 newReplyDiv.classList.add('reply-comment');
 
                 // Insert reply data into the reply div
                 inputReplyCommentData(reply, newReplyDiv, replyIndex)
 
-                // Adds the reply as a sibling to the comment div on the DOM
-                newCommentDiv.insertAdjacentElement('afterend', newReplyDiv);
+                // Attaches the reply to the comment
+                div.appendChild(newReplyDiv)
             });
         }
     });
@@ -39,12 +51,11 @@ function displayCommentsNode(data) {
 
 // Function to input data into reply comment node
 function inputReplyCommentData(reply, node, index) {
-    console.log(index);
-    const header = node.querySelector('.header').children;
+    const header = node.querySelector('.header');
 
-    header[0].setAttribute('src', reply.user.image.png); // Changes the avatar
-    header[1].innerText = reply.user.username; // Changes the username
-    header[2].innerText = reply.createdAt; // Changes the time on comment
+    header.children[0].setAttribute('src', reply.user.image.png); // Changes the avatar
+    header.children[1].innerText = reply.user.username; // Changes the username
+    header.querySelector('.created-at').innerText = reply.createdAt; // Changes the time on comment
 
     node.querySelector('.body .content').innerHTML = `<b style='color: hsl(238, 40%, 52%);'>@${reply.replyingTo}</b> ${reply.content}`;// Changes the user comment
 

@@ -10,8 +10,9 @@ setTimeout(() => {
 
         btn.addEventListener('click', () => {
 
-            //grabs the comment node user wants to reply to
+            //grabs the username and comment user wants to reply to
             const commentToReply = btn.parentNode.parentNode
+            const replyingTo = commentToReply.querySelector('.header .username').innerText
 
             //grabs and displays the input element to collect the user reply
             const replyForm = formEl.cloneNode(true)
@@ -27,18 +28,17 @@ setTimeout(() => {
             sendReplyBtn.addEventListener('click', e => {
                 e.preventDefault()
 
+                //creating the reply node
                 const newCommentDiv = cloneCommentDiv(true)
-                newCommentDiv.querySelector('.body p').innerText = replyForm.querySelector('input').value
+                newCommentDiv.querySelector('.body p').innerText = `@${replyingTo} ${replyForm.querySelector('input').value}` 
                 newCommentDiv.querySelector('.header .created-at').innerText = 'Just now'
                 newCommentDiv.classList.add('reply-comment')
                 
-                replyForm.replaceWith(newCommentDiv)
+                // replyForm.replaceWith(newCommentDiv)
+                replyForm.remove()
+                commentToReply.nextSibling.appendChild(newCommentDiv)
             })
 
-        })
-
-        btn.addEventListener('focusout', () => {
-            console.log('blurred');
         })
     });
 }, 1000);
