@@ -33,8 +33,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [solution]([https://your-solution-url.com](https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9/hub))
+- Live Site URL: [live site]([https://your-live-site-url.com](https://seyi-amusan.github.io/interactive-comment-section/))
 
 ## My process
 
