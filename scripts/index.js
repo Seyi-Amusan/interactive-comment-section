@@ -5,12 +5,8 @@ export const addCommentBtn = document.querySelector('.add-comment-btn')
 export const inputEl = document.querySelector('input')
 export const formEl = document.querySelector('form')
 export const modal = document.querySelector('.modal-bg')
-
 export const cancelDelete = document.querySelector('.cancel-delete')
-
 export const confirmDelete = document.querySelector('.confirm-delete')
-
-
 
 
 
@@ -60,10 +56,15 @@ setTimeout(() => {
     const upVoteBtns = document.querySelectorAll('.plus')
     const downVoteBtns = document.querySelectorAll('.minus')
 
+    let upvoted
 
-    upVoteBtns.forEach(btn => {
+    upVoteBtns.forEach((btn, index) => {
         btn.addEventListener('click', () => {
-            score.innerText++;
+            if (upvoted) {
+                return
+            }
+            score[index].innerText++;
+            upvoted = true
         })
     });
 

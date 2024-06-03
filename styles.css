@@ -127,6 +127,11 @@ input{
     border-radius: 10px;
 }
 
+input:focus{
+    border: 1px solid hsl(238, 40%, 52%);
+    outline: none;
+}
+
 input::placeholder{
     font-size: 1rem;
 }
@@ -143,7 +148,7 @@ input::placeholder{
 }
 
 .avatar{
-    height: 2rem;
+    height: 2.2rem;
 }
 
 .replies{

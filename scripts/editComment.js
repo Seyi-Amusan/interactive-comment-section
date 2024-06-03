@@ -6,8 +6,6 @@ onDeleteBtnsSet(btns => {
     //get edit btns on the dom
     const editBtns = getDeleteBtns(btns);
 
-    console.log(editBtns);
-
     editBtns.forEach(btn => {
         btn.addEventListener('click', e => {
             if (e.target.closest('.edit')) {
@@ -20,7 +18,7 @@ onDeleteBtnsSet(btns => {
 
                 input.placeholder = 'Edit comment...'
                 editForm.querySelector('button').innerText = 'EDIT'
-                section.insertBefore(editForm, commentToEdit.nextSibling)
+                commentToEdit.insertAdjacentElement('afterend', editForm)
 
                 //when user clicks on the button to send the edited comment message
                 editForm.querySelector('button').addEventListener('click', e => {
@@ -36,4 +34,4 @@ onDeleteBtnsSet(btns => {
     });
 })
 
-initBtns(addCommentBtn)
+// initBtns(addCommentBtn)

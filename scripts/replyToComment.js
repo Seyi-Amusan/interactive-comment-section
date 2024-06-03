@@ -1,4 +1,4 @@
-import { section, formEl, cloneCommentDiv, userCommentDiv, initBtns, addCommentBtn } from "./index.js";
+import { formEl, cloneCommentDiv } from "./index.js";
 
 
 //a second should be enough time to generate previous comments
@@ -18,11 +18,7 @@ setTimeout(() => {
             const replyForm = formEl.cloneNode(true)
             replyForm.querySelector('input').placeholder = 'Reply...'
             replyForm.querySelector('button').innerText = 'REPLY'
-            replyForm.querySelector('input').focus()
-            console.log(commentToReply.nextSibling);
-            commentToReply.insertAdjacentElement('afterend', replyForm)
-            // section.insertBefore(replyForm, commentToReply.nextSibling)
-            
+            commentToReply.insertAdjacentElement('afterend', replyForm)            
 
             const sendReplyBtn = replyForm.querySelector('button')
 
@@ -39,10 +35,13 @@ setTimeout(() => {
                 
                 // displaying the reply node
                 replyForm.remove()
-                if (commentToReply.nextElementSibling.classname === 'replies') {
+                if (commentToReply.nextElementSibling.className === 'replies') {
                     commentToReply.nextSibling.appendChild(newCommentDiv)
                 } else {
-                    commentToReply.insertAdjacentElement('afterend', newCommentDiv)
+                    const div = document.createElement('div')
+                    div.className = 'replies'
+                    commentToReply.insertAdjacentElement('afterend', div)
+                    commentToReply.nextSibling.appendChild(newCommentDiv)
                 }
             })
 
